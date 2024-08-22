@@ -12,11 +12,12 @@ class HotelsViewModel: ObservableObject {
             "language": "en",
             "distanceUnit": "mi"
         ]
+
         graphqlService.performQuery(
             queryFileName: "GeocodeHotels",
-            operationName: "geocodeHotels",
-            variables: variables
-        ) { [weak self] (result: Result<Data, Error>) in
+            variables: variables,
+            operationName: "geocodeHotels"
+        ) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let data):
@@ -27,11 +28,16 @@ class HotelsViewModel: ObservableObject {
         }
     }
 
-    // Fetch hotel details for each hotel ID
     func fetchHotelDetails(hotelIDs: [String]) {
         hotels = [] // Clear previous hotel details
         for hotelID in hotelIDs {
-            graphqlService.fetchHotelDetails(for: hotelID) { [weak self] result in
+            let variables: [String: Any] = ["ctyhocn": hotelID, "language": "en"]
+
+            graphqlService.performQuery(
+                queryFileName: "HotelDetailsQuery",
+                variables: variables,
+                operationName: "hotel"
+            ) { [weak self] result in
                 guard let self = self else { return }
                 switch result {
                 case .success(let data):
@@ -39,22 +45,6 @@ class HotelsViewModel: ObservableObject {
                 case .failure(let error):
                     print("Failed to load hotel details: \(error)")
                 }
-            }
-        }
-    }
-
-    private func loadHotelDetails(for hotelID: String) {
-        graphqlService.performQuery(
-            queryFileName: "HotelDetailsQuery",
-            operationName: "hotel",
-            variables: ["ctyhocn": hotelID, "language": "en"]
-        ) { [weak self] (result: Result<Data, Error>) in
-            guard let self = self else { return }
-            switch result {
-            case .success(let data):
-                self.parseHotelDetails(data: data)
-            case .failure(let error):
-                print("Failed to load hotel details: \(error)")
             }
         }
     }
@@ -75,7 +65,7 @@ class HotelsViewModel: ObservableObject {
         do {
             let response = try decoder.decode(HotelDetailsResponse.self, from: data)
             let hotel = response.data.hotel
-            DispatchQueue.main.async { // Ensure updates happen on the main thread
+            DispatchQueue.main.async {
                 self.hotels.append(hotel)
                 self.hotelNames.append(hotel.name)
             }
