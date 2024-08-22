@@ -9,11 +9,11 @@
 /* Begin PBXBuildFile section */
 		8D27A2902C75060C00ED67ED /* HotelsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D27A28F2C75060C00ED67ED /* HotelsViewModel.swift */; };
 		8D27A2922C75076100ED67ED /* HotelDetailsSwipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D27A2912C75076100ED67ED /* HotelDetailsSwipeView.swift */; };
-		8D27A2992C750CF500ED67ED /* GeocodeHotels.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 8D27A28B2C75045C00ED67ED /* GeocodeHotels.graphql */; };
 		8D27A29B2C75474D00ED67ED /* GraphQLService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D27A29A2C75474D00ED67ED /* GraphQLService.swift */; };
-		8D27A29C2C76320200ED67ED /* HotelDetailsQuery.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 8D79A37F2C74EF3700F8EF8C /* HotelDetailsQuery.graphql */; };
 		8D27A29F2C768FB300ED67ED /* HotelModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D27A29E2C768FB300ED67ED /* HotelModels.swift */; };
-		8D5DEB6E2C777F3C00DBC422 /* HotelDetailsResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 8D5DEB6D2C777F3C00DBC422 /* HotelDetailsResponse.json */; };
+		8D5DEB7B2C77C08400DBC422 /* HotelDetailsResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 8D5DEB772C77C08400DBC422 /* HotelDetailsResponse.json */; };
+		8D5DEB812C77C3D900DBC422 /* HotelDetailsQuery.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 8D5DEB7F2C77C3D900DBC422 /* HotelDetailsQuery.graphql */; };
+		8D5DEB822C77C3D900DBC422 /* GeocodeHotels.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 8D5DEB802C77C3D900DBC422 /* GeocodeHotels.graphql */; };
 		8D79A3452C74EA0E00F8EF8C /* HotelAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D79A3442C74EA0E00F8EF8C /* HotelAppApp.swift */; };
 		8D79A3472C74EA0E00F8EF8C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D79A3462C74EA0E00F8EF8C /* ContentView.swift */; };
 		8D79A3492C74EA0F00F8EF8C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D79A3482C74EA0F00F8EF8C /* Assets.xcassets */; };
@@ -41,12 +41,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		8D27A28B2C75045C00ED67ED /* GeocodeHotels.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = GeocodeHotels.graphql; path = ../../../HotelInfoApp/HotelInfoApp/Resources/Queries/GeocodeHotels.graphql; sourceTree = "<group>"; };
 		8D27A28F2C75060C00ED67ED /* HotelsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelsViewModel.swift; sourceTree = "<group>"; };
 		8D27A2912C75076100ED67ED /* HotelDetailsSwipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelDetailsSwipeView.swift; sourceTree = "<group>"; };
 		8D27A29A2C75474D00ED67ED /* GraphQLService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLService.swift; sourceTree = "<group>"; };
 		8D27A29E2C768FB300ED67ED /* HotelModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HotelModels.swift; path = HotelApp/Services/HotelModels.swift; sourceTree = SOURCE_ROOT; };
-		8D5DEB6D2C777F3C00DBC422 /* HotelDetailsResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = HotelDetailsResponse.json; sourceTree = "<group>"; };
+		8D5DEB772C77C08400DBC422 /* HotelDetailsResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = HotelDetailsResponse.json; sourceTree = "<group>"; };
+		8D5DEB7F2C77C3D900DBC422 /* HotelDetailsQuery.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HotelDetailsQuery.graphql; sourceTree = "<group>"; };
+		8D5DEB802C77C3D900DBC422 /* GeocodeHotels.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GeocodeHotels.graphql; sourceTree = "<group>"; };
 		8D79A3412C74EA0E00F8EF8C /* HotelApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HotelApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D79A3442C74EA0E00F8EF8C /* HotelAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelAppApp.swift; sourceTree = "<group>"; };
 		8D79A3462C74EA0E00F8EF8C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -57,7 +58,6 @@
 		8D79A35B2C74EA0F00F8EF8C /* HotelAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HotelAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D79A35F2C74EA0F00F8EF8C /* HotelAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelAppUITests.swift; sourceTree = "<group>"; };
 		8D79A3612C74EA0F00F8EF8C /* HotelAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		8D79A37F2C74EF3700F8EF8C /* HotelDetailsQuery.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = HotelDetailsQuery.graphql; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +93,16 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		8D5DEB782C77C08400DBC422 /* GraphQL */ = {
+			isa = PBXGroup;
+			children = (
+				8D5DEB802C77C3D900DBC422 /* GeocodeHotels.graphql */,
+				8D5DEB7F2C77C3D900DBC422 /* HotelDetailsQuery.graphql */,
+				8D5DEB772C77C08400DBC422 /* HotelDetailsResponse.json */,
+			);
+			path = GraphQL;
+			sourceTree = "<group>";
+		};
 		8D79A3382C74EA0E00F8EF8C = {
 			isa = PBXGroup;
 			children = (
@@ -116,8 +126,8 @@
 		8D79A3432C74EA0E00F8EF8C /* HotelApp */ = {
 			isa = PBXGroup;
 			children = (
+				8D5DEB782C77C08400DBC422 /* GraphQL */,
 				8D27A29D2C768F9100ED67ED /* Models */,
-				8D79A3722C74EAFC00F8EF8C /* GraphQL */,
 				8D79A3712C74EA7D00F8EF8C /* Services */,
 				8D79A3702C74EA6500F8EF8C /* ViewModels */,
 				8D79A36F2C74EA4900F8EF8C /* Views */,
@@ -176,16 +186,6 @@
 				8D27A29A2C75474D00ED67ED /* GraphQLService.swift */,
 			);
 			path = Services;
-			sourceTree = "<group>";
-		};
-		8D79A3722C74EAFC00F8EF8C /* GraphQL */ = {
-			isa = PBXGroup;
-			children = (
-				8D27A28B2C75045C00ED67ED /* GeocodeHotels.graphql */,
-				8D79A37F2C74EF3700F8EF8C /* HotelDetailsQuery.graphql */,
-				8D5DEB6D2C777F3C00DBC422 /* HotelDetailsResponse.json */,
-			);
-			path = GraphQL;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -292,10 +292,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D27A29C2C76320200ED67ED /* HotelDetailsQuery.graphql in Resources */,
-				8D27A2992C750CF500ED67ED /* GeocodeHotels.graphql in Resources */,
-				8D5DEB6E2C777F3C00DBC422 /* HotelDetailsResponse.json in Resources */,
+				8D5DEB822C77C3D900DBC422 /* GeocodeHotels.graphql in Resources */,
 				8D79A34C2C74EA0F00F8EF8C /* Preview Assets.xcassets in Resources */,
+				8D5DEB7B2C77C08400DBC422 /* HotelDetailsResponse.json in Resources */,
+				8D5DEB812C77C3D900DBC422 /* HotelDetailsQuery.graphql in Resources */,
 				8D79A3492C74EA0F00F8EF8C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

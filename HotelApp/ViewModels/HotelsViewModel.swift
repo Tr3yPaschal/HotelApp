@@ -2,17 +2,22 @@ import Foundation
 
 class HotelsViewModel: ObservableObject {
     @Published var hotelNames: [String] = []
-    @Published var hotels: [Hotel] = [] // Add this line to hold hotel details
+    @Published var hotels: [Hotel] = []
 
     private let graphqlService = GraphQLService()
 
     func fetchHotelIDs(location: String) {
-        let variables: [String: Any] = ["location": location, "language": "en"]
+        let variables: [String: Any] = [
+            "address": location,
+            "language": "en",
+            "distanceUnit": "mi"
+        ]
         graphqlService.performQuery(
-            queryFileName: "GeoCodeHotelsQuery",
-            operationName: "geocode_hotelSummaryOptions",
+            queryFileName: "GeocodeHotels",
+            operationName: "geocodeHotels",
             variables: variables
-        ) { (result: Result<Data, Error>) in
+        ) { [weak self] (result: Result<Data, Error>) in
+            guard let self = self else { return }
             switch result {
             case .success(let data):
                 self.parseHotelIDs(data: data)
@@ -22,11 +27,19 @@ class HotelsViewModel: ObservableObject {
         }
     }
 
+    // Fetch hotel details for each hotel ID
     func fetchHotelDetails(hotelIDs: [String]) {
-        hotelNames = [] // Clear previous names
         hotels = [] // Clear previous hotel details
         for hotelID in hotelIDs {
-            loadHotelDetails(for: hotelID)
+            graphqlService.fetchHotelDetails(for: hotelID) { [weak self] result in
+                guard let self = self else { return }
+                switch result {
+                case .success(let data):
+                    self.parseHotelDetails(data: data)
+                case .failure(let error):
+                    print("Failed to load hotel details: \(error)")
+                }
+            }
         }
     }
 
@@ -35,7 +48,8 @@ class HotelsViewModel: ObservableObject {
             queryFileName: "HotelDetailsQuery",
             operationName: "hotel",
             variables: ["ctyhocn": hotelID, "language": "en"]
-        ) { (result: Result<Data, Error>) in
+        ) { [weak self] (result: Result<Data, Error>) in
+            guard let self = self else { return }
             switch result {
             case .success(let data):
                 self.parseHotelDetails(data: data)
@@ -48,8 +62,8 @@ class HotelsViewModel: ObservableObject {
     private func parseHotelIDs(data: Data) {
         let decoder = JSONDecoder()
         do {
-            let response = try decoder.decode(GeoCodeData.self, from: data) // Update to GeoCodeData
-            let hotelIDs = response.geocode.ctyhocnList.hotelList.prefix(3).map { $0.ctyhocn }
+            let response = try decoder.decode(GeoCodeData.self, from: data)
+            let hotelIDs = response.data.geocode.ctyhocnList.hotelList.prefix(3).map { $0.ctyhocn }
             fetchHotelDetails(hotelIDs: Array(hotelIDs))
         } catch {
             print("Failed to decode hotel IDs: \(error)")
@@ -61,8 +75,8 @@ class HotelsViewModel: ObservableObject {
         do {
             let response = try decoder.decode(HotelDetailsResponse.self, from: data)
             let hotel = response.data.hotel
-            DispatchQueue.main.async {
-                self.hotels.append(hotel) // Update to use the hotels array
+            DispatchQueue.main.async { // Ensure updates happen on the main thread
+                self.hotels.append(hotel)
                 self.hotelNames.append(hotel.name)
             }
         } catch {

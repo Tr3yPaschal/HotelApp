@@ -19,12 +19,12 @@ struct Hotel: Codable {
     // Other properties can be added as needed
 }
 
-struct Images: Codable{
-    let master : Master
+struct Images: Codable {
+    let master: Master
 }
 
-struct Master: Codable{
-    let url : String
+struct Master: Codable {
+    let url: String
 }
 
 // MARK: - ContactInfo
@@ -36,16 +36,56 @@ struct ContactInfo: Codable {
 
 // MARK: - GeoCodeData
 struct GeoCodeData: Codable {
+    let data: GeoCodeResponse
+}
+
+// MARK: - GeoCodeResponse
+struct GeoCodeResponse: Codable {
     let geocode: Geocode
 }
 
 // MARK: - Geocode
 struct Geocode: Codable {
-    let ctyhocnList: HotelList
+    let match: Match
+    let ctyhocnList: CtyhocnList
 }
 
-// MARK: - HotelList
-struct HotelList: Codable {
+// MARK: - Match
+struct Match: Codable {
+    let id: String
+    let address: Address
+    let name: String
+    let type: String
+    let geometry: Geometry
+}
+
+// MARK: - Address
+struct Address: Codable {
+    let city: String
+    let country: String
+    let state: String
+}
+
+// MARK: - Geometry
+struct Geometry: Codable {
+    let location: Location
+    let bounds: Bounds
+}
+
+// MARK: - Location
+struct Location: Codable {
+    let latitude: Double
+    let longitude: Double
+}
+
+// MARK: - Bounds
+struct Bounds: Codable {
+    let northeast: Location
+    let southwest: Location
+}
+
+// MARK: - CtyhocnList
+struct CtyhocnList: Codable {
     let hotelList: [HotelID]
 }
 

@@ -6,7 +6,7 @@ struct ContentView: View {
     var body: some View {
         HotelDetailsSwipeView(viewModel: viewModel)
             .onAppear {
-                viewModel.fetchHotelDetails(hotelIDs: ["DALELHW", "DALPAGI", "DALDXHX"]) // Example IDs
+                viewModel.fetchHotelIDs(location: "Denver") // Fetch hotel IDs for Denver
             }
     }
 }

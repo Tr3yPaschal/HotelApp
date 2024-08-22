@@ -74,7 +74,7 @@ class GraphQLService {
     func fetchHotelDetails(for hotelID: String, completion: @escaping (Result<Data, Error>) -> Void) {
         performQuery(
             queryFileName: "HotelDetailsQuery",
-            operationName: "hotelDetails",
+            operationName: "hotel",
             variables: ["ctyhocn": hotelID, "language": "en"]
         ) { result in
             completion(result)
