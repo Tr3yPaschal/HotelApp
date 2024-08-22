@@ -1,8 +1,7 @@
 import Foundation
 
 class HotelsViewModel: ObservableObject {
-    @Published var hotelNames: [String] = []
-    @Published var hotels: [Hotel] = []
+     @Published var hotels: [Hotel] = []
 
     private let graphqlService = GraphQLService()
 
@@ -53,7 +52,7 @@ class HotelsViewModel: ObservableObject {
         let decoder = JSONDecoder()
         do {
             let response = try decoder.decode(GeoCodeData.self, from: data)
-            let hotelIDs = response.data.geocode.ctyhocnList.hotelList.prefix(3).map { $0.ctyhocn }
+            let hotelIDs = response.data.geocode.ctyhocnList.hotelList.map { $0.ctyhocn }
             fetchHotelDetails(hotelIDs: Array(hotelIDs))
         } catch {
             print("Failed to decode hotel IDs: \(error)")
@@ -67,7 +66,6 @@ class HotelsViewModel: ObservableObject {
             let hotel = response.data.hotel
             DispatchQueue.main.async {
                 self.hotels.append(hotel)
-                self.hotelNames.append(hotel.name)
             }
         } catch {
             print("Failed to decode hotel details: \(error)")
