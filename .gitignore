@@ -1,0 +1,62 @@
+# Xcode
+build/
+DerivedData/
+*.xcuserstate
+*.xcworkspace
+*.xcuserdatad/
+*.xcuserstate
+*.xcscheme
+*.xcproject/xcshareddata/WorkspaceSettings.xcsettings
+
+# Swift Package Manager
+.swiftpm/
+.build/
+
+# CocoaPods
+Pods/
+Podfile.lock
+
+# Carthage
+Carthage/Build/
+Carthage/Checkouts/
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/
+fastlane/test_output/
+fastlane/metadata/
+fastlane/Deliverfile
+fastlane/Appfile
+
+# Xcode Archive
+*.xcarchive
+
+# App Store metadata
+*.ipa
+*.dSYM.zip
+
+# Other
+*.log
+*.swp
+*.swo
+*.DS_Store
+*.localized
+*.xcuserstate
+*.xccheckout
+*.xcuserdata/
+*.moved-aside
+*.pyc
+*.pyo
+*.pyd
+*.ipch/
+*.hmap
+*.orig
+*.swp
+*.swo
+*.xcuserdatad
+*.xcodeproj/project.xcworkspace/
+*.xcodeproj/xcuserdata/
+*.xcodeproj/xcshareddata/
+*.xcodeproj/xcuserdata/
+
