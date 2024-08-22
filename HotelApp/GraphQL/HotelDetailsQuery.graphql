@@ -7,6 +7,11 @@ query hotel($language: String!, $ctyhocn: String!) {
       rewardCategory
       yearBuilt
       yearLastRenovated
+      images{
+          master{
+            url
+          }
+      }
       leadRate {
         lowest {
           rateAmount(currencyCode: "AUD")

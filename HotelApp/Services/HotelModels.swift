@@ -15,7 +15,16 @@ struct Hotel: Codable {
     let ctyhocn: String
     let name: String
     let contactInfo: ContactInfo
+    let images: Images
     // Other properties can be added as needed
+}
+
+struct Images: Codable{
+    let master : Master
+}
+
+struct Master: Codable{
+    let url : String
 }
 
 // MARK: - ContactInfo

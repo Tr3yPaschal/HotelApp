@@ -7,12 +7,28 @@ struct HotelDetailsSwipeView: View {
         TabView {
             ForEach(viewModel.hotels, id: \.ctyhocn) { hotel in
                 VStack(alignment: .leading, spacing: 10) {
-                    // Placeholder image
-                    Image(systemName: "photo")
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(height: UIScreen.main.bounds.height / 4)
-                        .clipped()
+                    if let imageUrl = URL(string: hotel.images.master.url) {
+                        AsyncImage(url: imageUrl) { image in
+                            image
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(height: UIScreen.main.bounds.height / 4)
+                                .clipped()
+                        } placeholder: {
+                            Image(systemName: "photo")
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(height: UIScreen.main.bounds.height / 4)
+                                .clipped()
+                        }
+                    } else {
+                        Image(systemName: "photo")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(height: UIScreen.main.bounds.height / 4)
+                            .clipped()
+                    }
+
                     
                     Text(hotel.name)
                         .font(.title)
