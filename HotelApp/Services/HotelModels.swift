@@ -14,12 +14,15 @@ struct HotelData: Codable {
 struct Hotel: Codable {
     let ctyhocn: String
     let name: String
+    let contactInfo: ContactInfo
     // Other properties can be added as needed
 }
 
-// MARK: - GeoCodeHotelsResponse
-struct GeoCodeHotelsResponse: Codable {
-    let data: GeoCodeData
+// MARK: - ContactInfo
+struct ContactInfo: Codable {
+    let phoneNumber: String?
+    let emailAddress1: String?
+    let emailAddress2: String?
 }
 
 // MARK: - GeoCodeData
