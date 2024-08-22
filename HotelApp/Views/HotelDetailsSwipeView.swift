@@ -31,14 +31,14 @@ struct HotelDetailsSwipeView: View {
 
                     
                     Text(hotel.name)
-                        .font(.title)
+                        .font(.headline)
                         .fontWeight(.bold)
                         .padding(.top, 10)
                         .padding(.horizontal)
                     
                     if let phoneNumber = hotel.contactInfo.phoneNumber {
                         Text("Phone: \(phoneNumber)")
-                            .font(.body)
+                            .font(.subheadline)
                             .padding(.horizontal)
                     }
 
